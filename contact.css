@@ -1,0 +1,462 @@
+/* contact.css - Kapcsolat oldal specifikus stílusok */
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.contact-container h1 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.5em;
+}
+
+.intro {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: var(--fg);
+  opacity: 0.8;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Kapcsolat információk */
+.contact-info {
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-info h2 {
+  color: var(--primary);
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.contact-info h3 {
+  color: var(--primary);
+  margin: 30px 0 15px 0;
+  font-size: 1.4em;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--bg);
+  border: 1px solid #eee;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.info-item .icon {
+  font-size: 1.5em;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.info-item div {
+  flex: 1;
+}
+
+.info-item strong {
+  display: block;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.info-item a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.info-item a:hover {
+  text-decoration: underline;
+}
+
+/* Közösségi linkek */
+.social-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.social-link {
+  display: block;
+  padding: 12px 15px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.social-link:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.social-link.facebook:hover { background: #3b5998; }
+.social-link.instagram:hover { background: #e4405f; }
+.social-link.twitter:hover { background: #1da1f2; }
+.social-link.youtube:hover { background: #ff0000; }
+
+/* Kapcsolat form */
+.contact-form-section {
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form-section h2 {
+  color: var(--primary);
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--fg);
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--fg);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.1);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Checkbox stílusok (örökölt a submit.css-ből) */
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: var(--bg);
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-top: 2px;
+  position: relative;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.checkbox-label:hover .checkmark {
+  border-color: var(--primary);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark:after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-label a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Form gombok */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.submit-btn,
+.reset-btn {
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-btn {
+  background: var(--primary);
+  color: white;
+  flex: 1;
+}
+
+.submit-btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.reset-btn {
+  background: #6c757d;
+  color: white;
+  flex: 0 0 auto;
+}
+
+.reset-btn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-loading {
+  opacity: 0.7;
+}
+
+/* Sikeres üzenet */
+.success-message {
+  background: #d4edda;
+  border: 2px solid #28a745;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  color: #155724;
+  margin-top: 20px;
+}
+
+.success-message h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.8em;
+}
+
+.success-message p {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+/* FAQ szekció */
+.faq-section {
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.faq-section h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.faq-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background: var(--accent);
+}
+
+.faq-question h3 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.faq-toggle {
+  font-size: 1.5em;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  background: var(--bg);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.faq-item.open .faq-answer {
+  padding: 20px;
+  max-height: 200px;
+}
+
+.faq-answer p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+/* Dark mode stílusok */
+body.dark .info-item {
+  background: var(--bg);
+  border-color: #444;
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea,
+body.dark .contact-form select {
+  background: var(--bg);
+  border-color: #444;
+  color: var(--fg);
+}
+
+body.dark .contact-form input:focus,
+body.dark .contact-form textarea:focus,
+body.dark .contact-form select:focus {
+  border-color: var(--primary);
+}
+
+body.dark .checkmark {
+  background-color: var(--bg);
+  border-color: #444;
+}
+
+body.dark .success-message {
+  background: #1e4620;
+  border-color: var(--primary);
+  color: #d4edda;
+}
+
+body.dark .faq-item {
+  border-color: #444;
+}
+
+/* Reszponzív design */
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .contact-container {
+    padding: 15px;
+  }
+  
+  .contact-container h1 {
+    font-size: 2em;
+  }
+  
+  .contact-info,
+  .contact-form-section,
+  .faq-section {
+    padding: 20px;
+  }
+  
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .reset-btn {
+    flex: 1;
+  }
+}
+
+/* Active navigációs elem */
+nav a.active {
+  background: var(--accent);
+  color: white;
+}
