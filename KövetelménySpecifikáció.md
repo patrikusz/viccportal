@@ -30,4 +30,3 @@
 | Elemzés   | K28  | Legtöbbet keresett szavak | 1.0 | Egy kis lista mutassa a leggyakrabban keresett kulcsszavakat. |
 | Tartalom  | K29  | Kapcsolat oldal  | 1.0 | Legyen egy rövid „Kapcsolat” oldal, ahol az üzemeltető elérhetősége vagy egy üzenetküldő űrlap található. |
 | Tartalom	| K30  | Vicc beküldése lehetőség	| 1.0 | Legyen egy egyszerű űrlap, ahol felhasználók új vicceket küldhetnek be. |
-| Tartalom |

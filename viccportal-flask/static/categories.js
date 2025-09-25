@@ -11,13 +11,29 @@ function renderCategories(jokes) {
   const categoriesSection = document.getElementById("categories");
   categoriesSection.innerHTML = `<h2>Kategóriák</h2>`;
   const categories = [...new Set(jokes.map(j => j.category || j.category_id))];
+
+  // Kategória smiley-k
+  const categoryEmojis = {
+    "Állatos": "🐶",
+    "Rendőrös": "👮",
+    "Pistike": "🧒",
+    "Szőke nős": "👱‍♀️",
+    "Munkahelyi": "💼",
+    "Egyéb": "😂"
+  };
+
+  // Like adatok betöltése
+  let likes = JSON.parse(localStorage.getItem("jokeLikes") || "{}");
+
   categories.forEach(cat => {
     const div = document.createElement("div");
     div.className = "category";
 
     const header = document.createElement("div");
     header.className = "category-header";
-    header.innerHTML = `${cat} <span>+</span>`;
+    // Smileyt illesztünk a kategória elé
+    const emoji = categoryEmojis[cat] || "😄";
+    header.innerHTML = `${emoji} ${cat} <span>+</span>`;
     header.addEventListener("click", () => {
       div.classList.toggle("open");
       header.querySelector("span").textContent = div.classList.contains("open") ? '-' : '+';
@@ -28,7 +44,21 @@ function renderCategories(jokes) {
     jokes.filter(j => (j.category || j.category_id) === cat).forEach(j => {
       const card = document.createElement("div");
       card.className = "card";
-      card.innerHTML = `<h3>Vicc #${j.id}</h3><p>„${j.text}”</p>`;
+      card.dataset.id = j.id;
+      card.innerHTML = `
+        <h3>Vicc #${j.id}</h3>
+        <p>„${j.text}”</p>
+        <button class="like-btn">👍</button>
+        <span class="like-count">${likes[j.id] || 0}</span>
+      `;
+      // Like gomb esemény
+      const btn = card.querySelector(".like-btn");
+      const count = card.querySelector(".like-count");
+      btn.addEventListener("click", () => {
+        likes[j.id] = (likes[j.id] || 0) + 1;
+        count.textContent = likes[j.id];
+        localStorage.setItem("jokeLikes", JSON.stringify(likes));
+      });
       content.appendChild(card);
     });
 

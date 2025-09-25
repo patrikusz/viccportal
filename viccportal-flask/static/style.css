@@ -102,6 +102,8 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 300px; /* ÚJ: maximális szélesség */
+  width: 100%;      /* ÚJ: ne legyen szélesebb, mint a max-width */
 }
 
 .card:hover {
@@ -211,4 +213,13 @@ main h2 {
 
 .new-joke-btn:hover {
   background: var(--accent);
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
 }

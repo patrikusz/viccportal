@@ -26,7 +26,6 @@ backToTop.addEventListener("click", () => window.scrollTo({top:0, behavior: 'smo
 // Kezdőlap renderelés
 function renderHome(jokes) {
   const home = document.getElementById("home");
-  // Feliratot külön elemként, nem a grid részeként
   home.innerHTML = "";
   let title = document.getElementById("home-title");
   if (!title) {
@@ -41,7 +40,31 @@ function renderHome(jokes) {
     card.innerHTML = `
       <h3>Vicc #${joke.id}</h3>
       <p>„${joke.text}”</p>
-      <small>Kategória: ${category_id}</small>
+      <small>Kategória: ${joke.category}</small>
+    `;
+    home.appendChild(card);
+  });
+
+  // Legtöbbet likelt viccek
+  let likes = JSON.parse(localStorage.getItem("jokeLikes") || "{}");
+  // Viccekhez hozzárendeljük a like számot
+  let jokesWithLikes = jokes.map(j => ({...j, likes: likes[j.id] || 0}));
+  // Csökkenő sorrendbe rendezzük, majd kiválasztjuk a top 3-at
+  let topLiked = jokesWithLikes.sort((a, b) => b.likes - a.likes).slice(0, 3);
+
+  // Kiemelt szakasz
+  const likedTitle = document.createElement("h2");
+  likedTitle.textContent = "Legtöbbet likelt viccek";
+  home.appendChild(likedTitle);
+
+  topLiked.forEach(joke => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>Vicc #${joke.id}</h3>
+      <p>„${joke.text}”</p>
+      <small>Kategória: ${joke.category}</small>
+      <span class="like-count">👍 ${joke.likes}</span>
     `;
     home.appendChild(card);
   });

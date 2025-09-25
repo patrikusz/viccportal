@@ -8,7 +8,11 @@
 </head>
 <body>
   <header>
-    <div class="logo">😂 Viccportál</div>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" width="50" height="50">
+      
+    </div>
+    
     <nav id="mainMenu">
       <a href="/">Kezdőlap</a>
       <a href="/categories">Kategóriák</a>
