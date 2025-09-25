@@ -6,6 +6,24 @@
   --accent: #ffb74d;
 }
 
+.like-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.like-btn:hover {
+  background: var(--accent);
+}
+.like-count {
+  margin-left: 10px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
 body {
 display: flex;
   flex-direction: column;
@@ -124,6 +142,8 @@ main {
 }
 
 /* Kategóriák */
+
+/* --- EREDETI KATEGÓRIA STÍLUSOK (visszaállításhoz hagyva) ---
 .category {
   border: 2px solid var(--primary);
   border-radius: 10px;
@@ -131,7 +151,6 @@ main {
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 .category-header {
   background: var(--primary);
   color: white;
@@ -142,15 +161,63 @@ main {
   align-items: center;
   font-weight: bold;
 }
-
 .category-content {
   display: none;
   padding: 15px;
   background: var(--bg);
 }
-
 .category.open .category-content {
   display: block;
+}
+--- VÉGE --- */
+
+/* ÚJ: <details> és <summary> alapú kategória stílusok */
+details.category {
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background: var(--bg);
+}
+details.category[open] {
+  /* nyitott állapotban is maradjon a stílus */
+}
+summary.category-header {
+  background: var(--primary);
+  color: white;
+  padding: 12px 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  list-style: none;
+}
+details.category[open] summary.category-header {
+  border-bottom: 1px solid var(--primary);
+}
+.category-content {
+  padding: 15px;
+  background: var(--bg);
+  display: block;
+}
+details.category:not([open]) .category-content {
+  display: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary.category-header::after {
+  content: ' +';
+  margin-left: auto;
+  font-weight: bold;
+  transition: content 0.2s;
+}
+details[open] > summary.category-header::after {
+  content: ' -';
 }
 
 /* Reszponzív grid */
