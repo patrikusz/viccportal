@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viccportál</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" width="50" height="50">
+      
+    </div>
+    
+    <nav id="mainMenu">
+      <a href="/">Kezdőlap</a>
+      <a href="/categories">Kategóriák</a>
+      <a href="/submit">Beküldés</a>
+      <a href="/contact">Kapcsolat</a>
+    </nav>
+    <input type="text" id="search" placeholder="Keresés viccek között..." />
+    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+  </header>
+
+  <main>
+    <section id="home"></section>
+    <section id="random"></section>
+    <section id="daily"></section>
+    <section id="list"></section>
+    <section id="details" class="hidden"></section>
+    <section id="submit"></section>
+    <section id="contact"></section>
+  </main>
+
+  <button id="backToTop">⬆ Vissza az elejére</button>
+
+  <footer>
+    <p>&copy; 2025 Viccportál</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
