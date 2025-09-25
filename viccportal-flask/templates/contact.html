@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapcsolat - Viccportál</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+</head>
+<body>
+  <header>
+    <div class="logo">😂 Viccportál</div>
+    <nav id="mainMenu">
+      <a href="/">Kezdőlap</a>
+      <a href="/categories">Kategóriák</a>
+      <a href="/submit">Beküldés</a>
+      <a href="#" class="active">Kapcsolat</a>
+    </nav>
+    <input type="text" id="search" placeholder="Keresés viccek között..." />
+    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+  </header>
+
+  <main>
+    <div class="contact-container">
+      <h1>Kapcsolat</h1>
+      <p class="intro">Kérdésed van? Szeretnél kapcsolatba lépni velünk? Itt megtalálsz minden szükséges információt!</p>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>📞 Elérhetőségek</h2>
+          <div class="info-item">
+            <span class="icon">📧</span>
+            <div>
+              <strong>Email:</strong>
+              <a href="mailto:info@viccportal.hu">info@viccportal.hu</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="icon">📱</span>
+            <div>
+              <strong>Telefon:</strong>
+              <a href="tel:+36301234567">+36 30 123 4567</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Cím:</strong>
+              <span>1234 Budapest, Vicc utca 42.</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="icon">🕒</span>
+            <div>
+              <strong>Ügyintézési idő:</strong>
+              <span>Hétfő - Péntek: 9:00 - 17:00</span>
+            </div>
+          </div>
+
+          <h3>🌐 Kövess minket!</h3>
+          <div class="social-links">
+            <a href="#" class="social-link facebook">📘 Facebook</a>
+            <a href="#" class="social-link instagram">📸 Instagram</a>
+            <a href="#" class="social-link twitter">🐦 Twitter</a>
+            <a href="#" class="social-link youtube">📺 YouTube</a>
+          </div>
+        </div>
+
+        <div class="contact-form-section">
+          <h2>💌 Írj nekünk!</h2>
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="contactName">Név *</label>
+              <input type="text" id="contactName" name="contactName" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Email cím *</label>
+              <input type="email" id="contactEmail" name="contactEmail" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject">Tárgy *</label>
+              <select id="contactSubject" name="contactSubject" required>
+                <option value="">Válassz témakört...</option>
+                <option value="Általános kérdés">Általános kérdés</option>
+                <option value="Vicc beküldés">Vicc beküldés</option>
+                <option value="Technikai probléma">Technikai probléma</option>
+                <option value="Hirdetés / Együttműködés">Hirdetés / Együttműködés</option>
+                <option value="Panasz">Panasz</option>
+                <option value="Egyéb">Egyéb</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Üzenet *</label>
+              <textarea id="contactMessage" name="contactMessage" rows="6" required placeholder="Írd le részletesen a kérdésedet vagy üzenetedet..."></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="contactPrivacy" name="contactPrivacy" required>
+                <span class="checkmark"></span>
+                Elfogadom az <a href="#privacy" target="_blank">adatkezelési tájékoztatót</a> *
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <span class="btn-text">Üzenet küldése</span>
+                <span class="btn-loading" style="display: none;">Küldés...</span>
+              </button>
+              <button type="reset" class="reset-btn">Törlés</button>
+            </div>
+          </form>
+
+          <div class="success-message" id="contactSuccessMessage" style="display: none;">
+            <h3>✅ Üzenet elküldve!</h3>
+            <p>Köszönjük az üzenetedet! Hamarosan válaszolunk a megadott email címre.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <h2>❓ Gyakran Ismételt Kérdések</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Hogyan küldhetek be viccet?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Menj a "Beküldés" oldalra, töltsd ki az űrlapot a viccel és a szükséges adatokkal. Minden beküldött viccet átnézünk, mielőtt közzétesszük.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Miért nem jelent meg a beküldött viccem?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>A beküldött vicceket kézzel moderáljuk. Ez 1-3 munkanapot vesz igénybe. Ha a vicc nem felel meg a közösségi irányelveknek, nem tesszük közzé.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Használhatom a vicceket máshol?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>A viccek szabadon használhatók nem kereskedelmi célokra. Kérjük, hivatkozz a Viccportálra, mint forrásra.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Hogyan működik a napi vicc?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Minden nap automatikusan kiválasztunk egy viccet a gyűjteményből. A napi vicc a dátum alapján változik.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <button id="backToTop">⬆ Vissza az elejére</button>
+
+  <footer>
+    <p>&copy; 2025 Viccportál</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='contact.js') }}"></script>
+</body>
+</html>
